@@ -24,7 +24,6 @@ public class DrawPanelListener implements MouseListener, MouseMotionListener {
     public DrawPanelListener(Graphics graphics, MainFrame mainframe) {
         this.graphics = graphics;
         this.mainframe = mainframe;
-
     }
 
     @Override

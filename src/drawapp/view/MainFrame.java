@@ -14,8 +14,6 @@ import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
-
 import javax.swing.UIManager;
 
 public class MainFrame extends JFrame {
@@ -51,8 +49,7 @@ public class MainFrame extends JFrame {
         drawmenu = new DrawMenu(this);
 
         //draw area
-        drawpanel = new DrawArea();
-        add(drawpanel, BorderLayout.CENTER);
+        drawpanel = new DrawArea(this);
 
         //draw tools
         toolspanel = new DrawTools(this);
@@ -101,6 +98,5 @@ public class MainFrame extends JFrame {
         //add mouse listners
         drawpanel.addMouseMotionListener(dl);
         drawpanel.addMouseListener(dl);
-
     }
 }

@@ -9,17 +9,17 @@ package drawapp.view;
  *
  * @author shsun
  */
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import javax.swing.JPanel;
+import java.awt.*;
+import javax.swing.*;
 
 public class DrawArea extends JPanel {  
     
-    public DrawArea() {
+    public DrawArea(JFrame mainframe) {
 
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(600, 600));
         setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
+
+        mainframe.add(this, BorderLayout.CENTER);
     }
 }
