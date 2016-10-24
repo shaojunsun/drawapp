@@ -16,10 +16,10 @@ import javax.swing.JPanel;
 
 public class DrawArea extends JPanel {  
     
-    public DrawArea(){	
-        setBackground(Color.WHITE);	
-	setPreferredSize(new Dimension(600,600));	
+    public DrawArea() {
+
+        setBackground(Color.WHITE);
+        setPreferredSize(new Dimension(600, 600));
         setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
     }
-        
 }

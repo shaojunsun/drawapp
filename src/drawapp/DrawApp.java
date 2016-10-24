@@ -7,7 +7,6 @@ public class DrawApp {
 		
 		MainFrame mainframe = new MainFrame();
 		mainframe.ShowFrame();
-		
 	}
 
 }
