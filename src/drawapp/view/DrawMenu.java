@@ -5,8 +5,6 @@
  */
 package drawapp.view;
 
-import drawapp.FileManager;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +13,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 
@@ -33,7 +32,7 @@ public class DrawMenu implements ActionListener {
     private JMenuItem jmc0; //color menu
     private JMenuItem jmh0, jmh1; //help menu
 
-    private static final String FILE_EXT = ".lvp";
+    private static final String FILE_EXT = ".png";
 
     private Color color = Color.black;
 
@@ -122,8 +121,7 @@ public class DrawMenu implements ActionListener {
         }
 
         if (e.getSource() == fileMenuNewItem) {
-            System.out.println("++++++");
-            //Color color = Color.WHITE;
+
             Graphics gr = mainframe.drawpanel.getGraphics();
             Color curColor = gr.getColor();
             gr.setColor(Color.white);
@@ -139,18 +137,17 @@ public class DrawMenu implements ActionListener {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
 
-                System.out.println(file.getName());
+                System.out.println(file.getAbsolutePath());
 
                 try {
-                    BufferedImage awtImage = FileManager.fileToImage(file);
+                    BufferedImage awtImage = ImageIO.read(file);
                     mainframe.drawpanel.paint(awtImage.getGraphics());
 
                 } catch (IOException e1) {
-                    e1.printStackTrace();
+
+                    throw new RuntimeException(e1);
                 }
-
             }
-
         }
         if (e.getSource() == fileMenuSaveItem) {
 
@@ -168,14 +165,16 @@ public class DrawMenu implements ActionListener {
 
                 // get bit map
                 BufferedImage awtImage = new BufferedImage(mainframe.drawpanel.getWidth(), mainframe.drawpanel.getHeight(), BufferedImage.TYPE_INT_RGB);
-                Graphics g = awtImage.getGraphics();
-                mainframe.drawpanel.printAll(g);
+                Graphics2D g2 = awtImage.createGraphics();
+                mainframe.drawpanel.paint(g2);
 
                 // write to the file
                 try {
-                    FileManager.imageToFile(awtImage, fileName);
+                    ImageIO.write(awtImage, "png", new File(fileName));
+
                 } catch (IOException e1) {
-                    e1.printStackTrace();
+
+                    throw new RuntimeException(e1);
                 }
             }
         }

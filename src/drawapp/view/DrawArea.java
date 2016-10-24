@@ -14,12 +14,10 @@ import javax.swing.*;
 
 public class DrawArea extends JPanel {  
     
-    public DrawArea(JFrame mainframe) {
+    public DrawArea() {
 
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(600, 600));
         setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
-
-        mainframe.add(this, BorderLayout.CENTER);
     }
 }

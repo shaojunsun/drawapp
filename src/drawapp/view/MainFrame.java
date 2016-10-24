@@ -25,7 +25,7 @@ public class MainFrame extends JFrame {
     //inital tool
     private String stool = "pencil";
 
-    // initial panels	   
+    // initial panels
     public DrawArea drawpanel;
     public DrawTools toolspanel;
     public DrawMenu drawmenu;
@@ -49,7 +49,8 @@ public class MainFrame extends JFrame {
         drawmenu = new DrawMenu(this);
 
         //draw area
-        drawpanel = new DrawArea(this);
+        drawpanel = new DrawArea();
+        add(drawpanel, BorderLayout.CENTER);
 
         //draw tools
         toolspanel = new DrawTools(this);
