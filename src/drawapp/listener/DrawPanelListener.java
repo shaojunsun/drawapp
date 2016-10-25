@@ -12,14 +12,14 @@ import java.awt.event.MouseMotionListener;
 
 public class DrawPanelListener implements MouseListener, MouseMotionListener {
 
-    Graphics graphics;
-    MainFrame mainframe;
+    private Graphics graphics;
+    private MainFrame mainframe;
 
     public static boolean flag;
-    int x1, x2, x3, x4;
-    int y1, y2, y3, y4;
-    int qbx1 = -1;
-    int qby1 = -1;
+    private int x1, x2;
+    private int y1, y2;
+    private int qbx1 = -1;
+    private int qby1 = -1;
 
     public DrawPanelListener(Graphics graphics, MainFrame mainframe) {
         this.graphics = graphics;
