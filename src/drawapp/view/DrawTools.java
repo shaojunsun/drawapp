@@ -13,8 +13,9 @@ import javax.swing.JRadioButton;
 
 
 public class DrawTools extends JPanel implements ActionListener {
-    String[] cmd = {"eraser", "oildrum", "pencil", "brush", "spraypaint", "textbox", "line", "rect", "oval", "roundrect", "filledRect", "filledOval", "filledRoundrect"};
-    MainFrame mainframe;
+
+    private String[] cmd = {"eraser", "oildrum", "pencil", "brush", "spraypaint", "textbox", "line", "rect", "oval", "roundrect", "filledRect", "filledOval", "filledRoundrect"};
+    private MainFrame mainframe;
 
     public DrawTools(MainFrame mainframe) {
 
@@ -26,16 +27,16 @@ public class DrawTools extends JPanel implements ActionListener {
 
         ButtonGroup bg = new ButtonGroup();
 
-        for (int i = 0; i < cmd.length; i++) {
-            //image 
+        for (String aCmd : cmd) {
+            //image
             //System.out.println(cmd[i]);
-            ImageIcon i1 = new ImageIcon("img/" + cmd[i] + "-1.png");
-            ImageIcon i2 = new ImageIcon("img/" + cmd[i] + "-2.png");
+            ImageIcon i1 = new ImageIcon("img/" + aCmd + "-1.png");
+            ImageIcon i2 = new ImageIcon("img/" + aCmd + "-2.png");
 
             JRadioButton jrb = new JRadioButton();
 
-            jrb.setActionCommand(cmd[i]);
-            jrb.setToolTipText(cmd[i]);
+            jrb.setActionCommand(aCmd);
+            jrb.setToolTipText(aCmd);
             jrb.setPreferredSize(new Dimension(25, 25));
 
             jrb.setIcon(i1);

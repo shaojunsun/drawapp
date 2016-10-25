@@ -22,7 +22,7 @@ import javax.swing.filechooser.FileFilter;
  */
 public class DrawMenu implements ActionListener {
 
-    MainFrame mainframe;
+    private MainFrame mainframe;
 
     private JMenu fileMenu, editMenu, viewMenu, imageMenu, colorMenu, helpMenu; //first level menus
     private JMenuItem fileMenuNewItem, fileMenuOpenItem, fileMenuSaveItem, fileMenuQuitItem; //file operation
@@ -137,8 +137,6 @@ public class DrawMenu implements ActionListener {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
 
-                System.out.println(file.getAbsolutePath());
-
                 try {
                     BufferedImage awtImage = ImageIO.read(file);
                     mainframe.drawpanel.paint(awtImage.getGraphics());
@@ -161,12 +159,11 @@ public class DrawMenu implements ActionListener {
                 if (fileName.length() < 4 || !fileName.substring(fileName.length() - 4).toLowerCase().equals(FILE_EXT)) {
                     fileName += FILE_EXT;
                 }
-                System.out.println(fileName);
 
                 // get bit map
                 BufferedImage awtImage = new BufferedImage(mainframe.drawpanel.getWidth(), mainframe.drawpanel.getHeight(), BufferedImage.TYPE_INT_RGB);
                 Graphics2D g2 = awtImage.createGraphics();
-                mainframe.drawpanel.paint(g2);
+                mainframe.drawpanel.printAll(g2);
 
                 // write to the file
                 try {
