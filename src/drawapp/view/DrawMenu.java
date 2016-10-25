@@ -181,7 +181,7 @@ public class DrawMenu implements ActionListener {
 
         if (e.getSource() == fileMenuQuitItem) {
 
-
+            mainframe.dispose();
         }
 
     }
